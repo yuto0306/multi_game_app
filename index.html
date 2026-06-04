@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <title>マルチ診断＆ホラーゲーム</title>
+
+  <link href="./main.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- ▼ タイトル選択画面（追加） -->
+    <div id="title-select" class="titleScreen screen active">
+      <h1 class="appLogo">マルチ診断＆ホラー</h1>
+      <p>遊ぶゲームを選んでください</p>
+
+      <button id="btn-diagnosis" class="primary">診断ゲームを遊ぶ</button>
+      <button id="btn-horror" class="secondary">ホラーゲームを遊ぶ</button>
+    </div>
+
+    <!-- ▼ ホラーゲーム画面 -->
+    <div id="horror-screen" class="screen">
+      <div id="horror-image-wrapper" class="fade">
+        <img id="horror-image" src="">
+      </div>
+
+      <div id="horror-text-box">
+        <p id="horror-text"></p>
+      </div>
+
+      <div id="horror-choices"></div>
+    </div>
+
+    <!-- ▼ エンディング画面 -->
+    <div id="horror-end" class="screen">
+      <h2 id="horror-end-title"></h2>
+      <p id="horror-end-text"></p>
+      <button id="horror-retry">もう一度</button>
+    </div>
+
+  </div>
+
+  <!-- ▼ 効果音・BGM -->
+  <audio id="se-click" src="bgm/click.mp3" preload="auto"></audio>
+  <audio id="se-scare" src="bgm/scare.mp3" preload="auto"></audio>
+  <audio id="se-whisper" src="bgm/whisper.mp3" preload="auto"></audio>
+  <audio id="se-footstep" src="bgm/footstep.mp3" preload="auto"></audio>
+  <audio id="se-door" src="bgm/door.mp3" preload="auto"></audio>
+
+  <audio id="bgm-menu" src="bgm/menu.mp3" preload="auto" loop></audio>
+  <audio id="bgm-psycho" src="bgm/psycho.mp3" preload="auto" loop></audio>
+  <audio id="bgm-horror" src="bgm/horror.mp3" preload="auto" loop></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="./main.js"></script>
+
+</body>
+</html>
