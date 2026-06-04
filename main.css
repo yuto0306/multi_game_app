@@ -1,0 +1,348 @@
+/*  
+===========================================================
+  全体設定（背景・フォント）
+===========================================================
+*/
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ホラーにも診断にも合うダーク背景 */
+  background: radial-gradient(circle at top, #222 0, #000 60%);
+  color: #f5f5f5;
+}
+
+/* アプリの中央寄せ */
+#app {
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 20px;
+}
+
+
+
+/*  
+===========================================================
+  タイトル画面（豪華版）
+===========================================================
+*/
+.titleScreen {
+  text-align: center;
+  padding: 40px 20px;
+  animation: floatBg 6s ease-in-out infinite; /* ← ゆらゆら背景 */
+}
+
+/* ロゴ（追加） */
+.appLogo {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ff4b6e, #9c27b0);
+
+  /* ベンダープレフィックスと標準プロパティを両方定義 */
+  -webkit-background-clip: text;   /* Safari / WebKit 用 */
+  background-clip: text;           /* 標準プロパティ（警告を消すために追加） */
+  -webkit-text-fill-color: transparent; /* Safari で文字を透明にする */
+  color: transparent;              /* 他ブラウザ用フォールバック */
+
+  text-shadow: 0 0 12px rgba(255, 75, 110, 0.4);
+  margin-bottom: 8px;
+}
+
+.titleScreen h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  animation: titleGlow 3s ease-in-out infinite; /* ← 光るアニメ */
+}
+
+.titleScreen p {
+  opacity: 0.8;
+}
+
+
+
+/*  
+===========================================================
+  ボタン（共通デザイン）
+===========================================================
+*/
+button {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* メインボタン（ピンク） */
+button.primary {
+  background: #ff4b6e;
+  color: #fff;
+}
+
+/* サブボタン（ダーク） */
+button.secondary {
+  background: #444;
+  color: #fff;
+}
+
+
+
+/*  
+===========================================================
+  診断ゲーム UI
+===========================================================
+*/
+.start, .resultView, .questionView {
+  text-align: center;
+  padding: 20px;
+}
+
+.questionText {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* 選択肢の並び */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 選択肢カード */
+.choiceCard {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(20, 20, 20, 0.8);
+  transition: 0.2s;
+}
+
+/* ホバー時のアニメーション */
+.choiceCard:hover {
+  transform: scale(1.03);
+  border-color: #ff4b6e;
+}
+
+.choiceCard input {
+  margin-right: 10px;
+}
+
+/* 診断結果のスコア */
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.desc {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+
+
+/*  
+===========================================================
+  診断結果の棒グラフ（追加）
+===========================================================
+*/
+.graphBar {
+  width: 100%;
+  background: #333;
+  border-radius: 8px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.graphFill {
+  height: 18px;
+  background: #ff4b6e;
+  width: 0%;
+  transition: width 0.8s ease;
+}
+
+
+
+/*  
+===========================================================
+  ホラーゲーム UI
+===========================================================
+*/
+.horrorStart, .horrorScene, .ending {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  border: 1px solid #444;
+}
+
+/* エンディングごとの色 */
+.ending.happy {
+  border-color: #4caf50;
+}
+
+.ending.bad {
+  border-color: #f44336;
+}
+
+.ending.secret {
+  border-color: #9c27b0;
+}
+
+
+
+/*  
+===========================================================
+  アニメーション（フェードイン・揺れ・フラッシュ）
+===========================================================
+*/
+
+/* フェードイン */
+.fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 揺れ（ホラー演出） */
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* フラッシュ（ホラー演出） */
+.flash {
+  animation: flash 0.3s ease;
+}
+
+@keyframes flash {
+  0% { background-color: rgba(255,255,255,0.8); }
+  100% { background-color: transparent; }
+}
+
+
+
+/*  
+===========================================================
+  画面暗転（黒フェード） ← 追加
+===========================================================
+*/
+.darkFade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  animation: darkFadeAnim 0.6s forwards;
+}
+
+@keyframes darkFadeAnim {
+  from { opacity: 0; }
+  to { opacity: 0.8; }
+}
+
+
+
+/*  
+===========================================================
+  タイトル背景ゆらゆら（追加）
+===========================================================
+*/
+@keyframes floatBg {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 10px #ff4b6e; }
+  50% { text-shadow: 0 0 25px #ff4b6e; }
+  100% { text-shadow: 0 0 10px #ff4b6e; }
+}
+
+
+
+/*  
+===========================================================
+  SNS風シェア枠（追加）
+===========================================================
+*/
+.shareFrame {
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 16px;
+  border: 2px solid #fff;
+  text-align: center;
+}
+
+
+
+/*  
+===========================================================
+  スマホ最適化
+===========================================================
+*/
+@media (max-width: 600px) {
+  #app {
+    padding: 16px;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 14px;
+  }
+
+  .questionText {
+    font-size: 1.3rem;
+  }
+
+  .choiceCard {
+    padding: 14px;
+  }
+}
+
+
+.horrorImg {
+  width: 100%;
+  border-radius: 8px;
+  margin: 12px 0;
+  opacity: 0.85;
+  filter: brightness(0.7) contrast(1.2);
+}
+
+/* ホラーシーン内の画像とテキストの余白調整（追加） */
+.horrorScene img.horrorImg {
+  margin-bottom: 16px;
+}
+
+.horrorScene p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* エンディング画像の調整（追加） */
+.ending img.horrorImg {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
